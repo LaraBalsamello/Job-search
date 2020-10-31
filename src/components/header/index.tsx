@@ -1,10 +1,23 @@
-import * as React from 'react';
-import { Text, View } from 'react-native';
+import React, { FC } from 'react';
+import {
+  BoldTitleWhite,
+  FlexContainer,
+  StatusBarOffset,
+  TextContainer,
+} from './styles';
 
-const Header: React.FC = () => (
-  <View>
-    <Text>test</Text>
-  </View>
+interface HeaderProps {
+  title: string;
+  img?: string;
+}
+
+const Header: FC<HeaderProps> = ({ title = '' }) => (
+  <FlexContainer>
+    <StatusBarOffset />
+    <TextContainer>
+      <BoldTitleWhite>{title}</BoldTitleWhite>
+    </TextContainer>
+  </FlexContainer>
 );
 
 export default Header;
