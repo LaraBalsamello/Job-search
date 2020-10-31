@@ -15,7 +15,7 @@ const MainScreen: FC = () => (
       {/* <CenteredText>
         *Presioná la compañia de tu interés para ver los empleos disponibles
       </CenteredText> */}
-      <CompaniesList></CompaniesList>
+      <CompaniesList companies={[1, 2, 3]}></CompaniesList>
     </BottomContainer>
   </Container>
 );

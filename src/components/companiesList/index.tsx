@@ -1,6 +1,6 @@
 import Company from 'components/company';
 import React, { FC } from 'react';
-import { View } from 'react-native';
+import { Container } from './styles';
 
 type CompanyType = {
   name: string;
@@ -12,10 +12,12 @@ interface CompaniesListProps {
 }
 
 const CompaniesList: FC<CompaniesListProps> = ({ companies }) => (
-  <View>
+  <Container>
     {companies &&
-      companies.map((company) => <Company company={company}></Company>)}
-  </View>
+      companies.map((company, index) => (
+        <Company key={index} company={company}></Company>
+      ))}
+  </Container>
 );
 
 export default CompaniesList;

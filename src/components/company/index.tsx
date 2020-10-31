@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
+import { CardContainer } from './styles';
 
 interface CompanyProps {
   company: Company;
@@ -11,9 +12,9 @@ type Company = {
 };
 
 const Company: FC<CompanyProps> = ({ company }) => (
-  <View>
+  <CardContainer>
     <Text>{company}</Text>
-  </View>
+  </CardContainer>
 );
 
 export default Company;

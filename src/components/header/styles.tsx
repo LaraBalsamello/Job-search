@@ -15,12 +15,8 @@ export const FlexContainer: StyleProp<any> = styled.View`
   border-right-width: 0px;
   align-items: center;
   shadow-color: black;
-  shadow-offset: {
-    width: 0;
-    height: 4;
-  }
   shadow-opacity: 0.32;
-  shadow-radius: 5.46;
+  shadow-radius: 5.46px;
   elevation: 5;
 `;
 
