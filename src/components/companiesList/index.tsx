@@ -4,20 +4,22 @@ import { Container } from './styles';
 
 type CompanyType = {
   name: string;
-  slug: string;
+  logoUrl: string;
+  websiteUrl: string;
 };
 
 interface CompaniesListProps {
   companies?: Array<CompanyType>;
 }
 
-const CompaniesList: FC<CompaniesListProps> = ({ companies }) => (
-  <Container>
-    {companies &&
-      companies.map((company, index) => (
-        <Company key={index} company={company}></Company>
-      ))}
-  </Container>
-);
-
+const CompaniesList: FC<CompaniesListProps> = ({ companies }) => {
+  return (
+    <Container>
+      {companies &&
+        companies.map((company: CompanyType, index: number) => (
+          <Company key={index} company={company}></Company>
+        ))}
+    </Container>
+  );
+};
 export default CompaniesList;

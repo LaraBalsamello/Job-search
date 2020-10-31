@@ -2,6 +2,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import MainScreen from '../screens/mainScreen';
+import DetailsScreen from 'screens/detailsScreen';
 
 const Stack = createStackNavigator();
 
@@ -10,9 +11,19 @@ const MainNav = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
+          options={{
+            headerTransparent: true,
+            title: '',
+          }}
           name="Home"
           component={MainScreen}
-          options={{ title: 'Welcome' }}
+        />
+        <Stack.Screen
+          name="Jobs"
+          component={DetailsScreen}
+          options={{
+            headerShown: false,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

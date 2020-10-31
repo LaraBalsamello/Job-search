@@ -1,14 +1,46 @@
+import { Colors } from 'assets/styles/colors';
 import styled from 'styled-components/native';
 
 export const CardContainer = styled.View`
   display: flex;
   flex-direction: row;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  elevation: 5;
-  shadow-color: black;
+  padding: 0px 10px;
+  elevation: 2;
+  background-color: ${Colors.white};
+  width: 80%;
+  height: 48px;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 0px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+`;
 
-  shadow-opacity: 0.32;
-  shadow-radius: 5.46px;
-  border: 10px solid transparent;
+export const ContentContainer = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 100%;
+  margin: 10px 0px;
+`;
+
+export const CompanyNameText = styled.TouchableOpacity`
+  text-align: center;
+  font-family: 'beba-neue';
+  width: 60%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const Website = styled.Text`
+  font-size: 10px;
+  margin-right: 0;
+  position: absolute;
+  right: 15px;
+  text-decoration: underline;
+  color: ${Colors.silver};
 `;

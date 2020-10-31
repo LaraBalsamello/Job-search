@@ -21,5 +21,12 @@ export const BottomContainer: StyleProp<any> = styled.View`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  padding: 20px;
+  height: 80%;
+  padding: 10px;
+`;
+
+export const SmallText: StyleProp<any> = styled.Text`
+  font-size: 9px;
+  padding: 15px;
+  padding-bottom: 0px;
 `;

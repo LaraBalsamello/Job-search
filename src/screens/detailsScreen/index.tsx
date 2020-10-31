@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
 import Header from 'components/header/index';
-import CompaniesList from 'components/companiesList';
-import { BottomContainer, Container, SmallText, TopContainer } from './styles';
+import {
+  BottomContainer,
+  Container,
+  SmallText,
+  TopContainer,
+} from '../mainScreen/styles';
 import { CenteredText } from 'assets/styles/main';
 import { gql, useQuery } from '@apollo/client';
 
@@ -15,7 +19,7 @@ const COMPANIES_QUERY = gql`
   }
 `;
 
-const MainScreen: FC = () => {
+const DetailsScreen: FC = () => {
   const { data, loading } = useQuery(COMPANIES_QUERY);
   return !loading ? (
     <Container>
@@ -23,17 +27,16 @@ const MainScreen: FC = () => {
         <Header img="" title="Job search"></Header>
       </TopContainer>
       <BottomContainer>
-        <CenteredText customStyles>Bienvenid@!</CenteredText>
+        <CenteredText customStyles>Trabajos disponibles en</CenteredText>
         <CenteredText>
           Mirá las compañias con empleos disponibles:{' '}
         </CenteredText>
         <SmallText>
           *Presioná la compañia de tu interés para ver los empleos disponibles
         </SmallText>
-        <CompaniesList companies={data && data.companies}></CompaniesList>
       </BottomContainer>
     </Container>
   ) : null;
 };
 
-export default MainScreen;
+export default DetailsScreen;

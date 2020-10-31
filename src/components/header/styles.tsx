@@ -18,6 +18,7 @@ export const FlexContainer: StyleProp<any> = styled.View`
   shadow-opacity: 0.32;
   shadow-radius: 5.46px;
   elevation: 5;
+  width: 100%;
 `;
 
 export const StatusBarOffset: StyleProp<any> = styled.View`
