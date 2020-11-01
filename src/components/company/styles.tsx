@@ -36,6 +36,11 @@ export const CompanyNameText = styled.TouchableOpacity`
   align-items: center;
 `;
 
+export const TextBebaNeue = styled.Text`
+  font-family: 'beba-neue';
+  ${(props) => (props.customStyle ? props.customStyle : null)}
+`;
+
 export const Website = styled.Text`
   font-size: 10px;
   margin-right: 0;
@@ -43,4 +48,15 @@ export const Website = styled.Text`
   right: 15px;
   text-decoration: underline;
   color: ${Colors.silver};
+`;
+
+export const IconsView = styled.View`
+  background-color: ${Colors.blueMunsell};
+  color: ${Colors.white};
+  width: 50px;
+  height: 48px;
+  margin-right: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

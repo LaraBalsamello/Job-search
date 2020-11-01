@@ -20,7 +20,7 @@ const MainScreen: FC = () => {
   return !loading ? (
     <Container>
       <TopContainer>
-        <Header img="" title="Job search"></Header>
+        <Header title="Job search"></Header>
       </TopContainer>
       <BottomContainer>
         <CenteredText customStyles>Bienvenid@!</CenteredText>

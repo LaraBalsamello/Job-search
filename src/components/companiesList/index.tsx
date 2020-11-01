@@ -1,6 +1,6 @@
 import Company from 'components/company';
 import React, { FC } from 'react';
-import { Container } from './styles';
+import { ContainerScroll } from './styles';
 
 type CompanyType = {
   name: string;
@@ -14,12 +14,12 @@ interface CompaniesListProps {
 
 const CompaniesList: FC<CompaniesListProps> = ({ companies }) => {
   return (
-    <Container>
+    <ContainerScroll>
       {companies &&
         companies.map((company: CompanyType, index: number) => (
           <Company key={index} company={company}></Company>
         ))}
-    </Container>
+    </ContainerScroll>
   );
 };
 export default CompaniesList;

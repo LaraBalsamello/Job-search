@@ -20,8 +20,9 @@ export const BottomContainer: StyleProp<any> = styled.View`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 80%;
+  max-height: 80%;
   padding: 10px;
 `;
 
