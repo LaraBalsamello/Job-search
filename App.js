@@ -1,38 +1,28 @@
+/* eslint-disable global-require */
+/* eslint-disable no-use-before-define */
+
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
+import { useFonts } from 'expo-font';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import MainNav from './src/navigation/index.tsx';
 
-// You can import from local files
-import AssetExample from './components/AssetExample';
-
-// or any pure javascript modules available in npm
-import { Card } from 'react-native-paper';
+// Initialize Apollo Client
+const client = new ApolloClient({
+  uri: 'https://api.graphql.jobs/',
+  cache: new InMemoryCache(),
+});
 
 export default function App() {
+  const [isLoaded] = useFonts({
+    'beba-neue': require('assets/fonts/BebasNeue-Regular.ttf'),
+    asap: require('assets/fonts/Asap-Medium.ttf'),
+    asapBold: require('assets/fonts/Asap-Bold.ttf'),
+  });
   return (
-    <View style={styles.container}>
-      <Text style={styles.paragraph}>
-        Change code in the editor and watch it change on your phone! Save to get a shareable url.
-      </Text>
-      <Card>
-        <AssetExample />
-      </Card>
-    </View>
+    isLoaded && (
+      <ApolloProvider client={client}>
+        <MainNav />
+      </ApolloProvider>
+    )
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
-    padding: 8,
-  },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-});

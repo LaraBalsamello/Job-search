@@ -20,8 +20,18 @@
     "semi": ["error", "always"],
     "no-unused-vars": "error",
     "no-invalid-regexp": "error",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "object-curly-newline": "off"
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", ".tsx"] }
+    ],
+    "object-curly-newline": "off",
+    "no-use-before-define": "off",
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-color-literals": 2,
+    "react-native/no-raw-text": 2,
+    "react-native/no-single-element-style-arrays": 2
   },
   "settings": {
     "import/resolver": {
