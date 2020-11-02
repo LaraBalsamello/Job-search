@@ -4,21 +4,24 @@ import { StatusBar, StyleProp } from 'react-native';
 import styled from 'styled-components/native';
 
 export const FlexContainer: StyleProp<any> = styled.View`
-  display: flex;
-  flex-direction: column;
-  color: ${Colors.word};
-  background-color: ${Colors.silver};
-  padding-bottom: 30px;
-  justify-content: center;
-  border: 2px solid gainsboro;
-  border-left-width: 0px;
-  border-right-width: 0px;
-  align-items: center;
   shadow-color: black;
   shadow-opacity: 0.32;
   shadow-radius: 5.46px;
   elevation: 5;
-  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  color: ${Colors.word};
+  background-color: ${Colors.silver};
+  padding-bottom: 30px;
+  border: 2px solid gainsboro;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  align-items: center;
+  min-width: 100%;
+  margin: auto;
+  justify-content: center;
+  position: relative;
 `;
 
 export const StatusBarOffset: StyleProp<any> = styled.View`
@@ -30,6 +33,7 @@ export const StatusBarOffset: StyleProp<any> = styled.View`
 export const TextContainer: StyleProp<any> = styled.View`
   display: flex;
   margin-top: ${StatusBar.currentHeight}px;
+  flex-direction: row;
 `;
 
 export const BoldTitleWhite: StyleProp<any> = styled.Text`
@@ -38,3 +42,10 @@ export const BoldTitleWhite: StyleProp<any> = styled.Text`
   font-family: ${Fonts.title};
   color: ${Colors.white};
 `;
+
+export const styles: StyleProp<Object> = {
+  width: 40,
+  height: 40,
+  left: 15,
+  position: 'absolute',
+};

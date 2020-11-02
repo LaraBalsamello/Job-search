@@ -1,4 +1,5 @@
 import { Colors } from 'assets/styles/colors';
+import { ImageStyle } from 'react-native';
 import styled from 'styled-components/native';
 
 export const CardContainer = styled.View`
@@ -36,11 +37,51 @@ export const CompanyNameText = styled.TouchableOpacity`
   align-items: center;
 `;
 
+export const TextBebaNeue = styled.Text`
+  font-family: 'beba-neue';
+  ${(props) => (props.customStyle ? props.customStyle : null)}
+`;
+
 export const Website = styled.Text`
   font-size: 10px;
   margin-right: 0;
-  position: absolute;
-  right: 15px;
   text-decoration: underline;
   color: ${Colors.silver};
 `;
+
+export const WebsiteContainer = styled.TouchableOpacity`
+  position: absolute;
+  right: 15px;
+  height: 50px;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const IconsView = styled.View`
+  background-color: ${Colors.blueMunsell};
+  color: ${Colors.white};
+  width: 50px;
+  height: 48px;
+  margin-right: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const imageStyles: ImageStyle = {
+  width: 50,
+  height: 48,
+  resizeMode: 'contain',
+  borderWidth: 1,
+  shadowColor: '#000',
+  shadowOffset: {
+    width: 0,
+    height: 2,
+  },
+  shadowOpacity: 0.25,
+  shadowRadius: 3.84,
+  backgroundColor: Colors.white,
+  marginRight: '2%',
+};

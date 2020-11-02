@@ -3,21 +3,37 @@ import {
   BoldTitleWhite,
   FlexContainer,
   StatusBarOffset,
+  styles,
   TextContainer,
 } from './styles';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity, View } from 'react-native';
+import { HeaderProps } from 'interfaces';
 
-interface HeaderProps {
-  title: string;
-  img?: string;
-}
+const Header: FC<HeaderProps> = ({ title = '', iconName }) => {
+  const navigation = useNavigation();
 
-const Header: FC<HeaderProps> = ({ title = '' }) => (
-  <FlexContainer>
-    <StatusBarOffset />
-    <TextContainer>
-      <BoldTitleWhite>{title}</BoldTitleWhite>
-    </TextContainer>
-  </FlexContainer>
-);
+  return (
+    <View>
+      <StatusBarOffset />
+      <FlexContainer>
+        {iconName && (
+          <TouchableOpacity style={styles}>
+            <Ionicons
+              onPress={() => navigation.goBack()}
+              name={iconName}
+              size={34}
+              color="white"
+            />
+          </TouchableOpacity>
+        )}
+        <TextContainer>
+          <BoldTitleWhite>{title}</BoldTitleWhite>
+        </TextContainer>
+      </FlexContainer>
+    </View>
+  );
+};
 
 export default Header;

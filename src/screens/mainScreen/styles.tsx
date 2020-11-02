@@ -20,8 +20,9 @@ export const BottomContainer: StyleProp<any> = styled.View`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 80%;
+  max-height: 80%;
   padding: 10px;
 `;
 
@@ -30,3 +31,5 @@ export const SmallText: StyleProp<any> = styled.Text`
   padding: 15px;
   padding-bottom: 0px;
 `;
+
+export const customStyles = 'margin-top:10px; margin-bottom: 10px;';

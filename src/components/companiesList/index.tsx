@@ -1,25 +1,16 @@
 import Company from 'components/company';
+import { CompaniesListProps, CompanyType } from 'interfaces';
 import React, { FC } from 'react';
-import { Container } from './styles';
-
-type CompanyType = {
-  name: string;
-  logoUrl: string;
-  websiteUrl: string;
-};
-
-interface CompaniesListProps {
-  companies?: Array<CompanyType>;
-}
+import { ContainerScroll } from './styles';
 
 const CompaniesList: FC<CompaniesListProps> = ({ companies }) => {
   return (
-    <Container>
+    <ContainerScroll>
       {companies &&
         companies.map((company: CompanyType, index: number) => (
           <Company key={index} company={company}></Company>
         ))}
-    </Container>
+    </ContainerScroll>
   );
 };
 export default CompaniesList;

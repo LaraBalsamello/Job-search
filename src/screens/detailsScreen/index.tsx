@@ -1,42 +1,52 @@
 import React, { FC } from 'react';
 import Header from 'components/header/index';
-import {
-  BottomContainer,
-  Container,
-  SmallText,
-  TopContainer,
-} from '../mainScreen/styles';
+import { BottomContainer, Container, TopContainer } from '../mainScreen/styles';
 import { CenteredText } from 'assets/styles/main';
-import { gql, useQuery } from '@apollo/client';
+import Company from 'components/company';
+import { ContainerScroll } from 'components/companiesList/styles';
+import JobComponent from 'components/Jobs';
+import { CompanyType, Job } from 'interfaces';
+import { customJobStyle, customStyles } from './styles';
 
-const COMPANIES_QUERY = gql`
-  {
-    companies {
-      name
-      logoUrl
-      websiteUrl
-    }
+const DetailsScreen: FC<any> = ({ route }) => {
+  const { company } = route.params;
+
+  const comp: CompanyType = {
+    name: company.name,
+    websiteUrl: company.websiteUrl,
+    logoUrl: company.logoUrl,
+  };
+
+  let jobs: Array<Job>;
+
+  if (company) {
+    jobs = company.jobs;
   }
-`;
 
-const DetailsScreen: FC = () => {
-  const { data, loading } = useQuery(COMPANIES_QUERY);
-  return !loading ? (
+  return (
     <Container>
       <TopContainer>
-        <Header img="" title="Job search"></Header>
+        <Header iconName="md-arrow-back" title="Job search"></Header>
       </TopContainer>
       <BottomContainer>
-        <CenteredText customStyles>Trabajos disponibles en</CenteredText>
-        <CenteredText>
-          Mirá las compañias con empleos disponibles:{' '}
+        <CenteredText customStyles={customStyles}>
+          {jobs && jobs.length > 0
+            ? 'Empleos disponibles en:'
+            : 'No se encontraron empleos disponibles en:'}
         </CenteredText>
-        <SmallText>
-          *Presioná la compañia de tu interés para ver los empleos disponibles
-        </SmallText>
+        <Company company={comp}></Company>
+        <ContainerScroll>
+          {jobs.map((job: any, i: number) => (
+            <JobComponent
+              key={`${i}job_`}
+              customStyle={jobs.length - 1 === i ? customJobStyle : ''}
+              job={job}
+            ></JobComponent>
+          ))}
+        </ContainerScroll>
       </BottomContainer>
     </Container>
-  ) : null;
+  );
 };
 
 export default DetailsScreen;
