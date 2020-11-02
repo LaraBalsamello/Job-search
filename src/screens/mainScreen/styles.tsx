@@ -31,3 +31,5 @@ export const SmallText: StyleProp<any> = styled.Text`
   padding: 15px;
   padding-bottom: 0px;
 `;
+
+export const customStyles = 'margin-top:10px; margin-bottom: 10px;';

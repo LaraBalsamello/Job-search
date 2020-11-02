@@ -42,3 +42,10 @@ export const BoldTitleWhite: StyleProp<any> = styled.Text`
   font-family: ${Fonts.title};
   color: ${Colors.white};
 `;
+
+export const styles: StyleProp<Object> = {
+  width: 40,
+  height: 40,
+  left: 15,
+  position: 'absolute',
+};

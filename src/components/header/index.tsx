@@ -3,16 +3,13 @@ import {
   BoldTitleWhite,
   FlexContainer,
   StatusBarOffset,
+  styles,
   TextContainer,
 } from './styles';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity, View } from 'react-native';
-
-interface HeaderProps {
-  title: string;
-  iconName?: string;
-}
+import { HeaderProps } from 'interfaces';
 
 const Header: FC<HeaderProps> = ({ title = '', iconName }) => {
   const navigation = useNavigation();
@@ -22,14 +19,7 @@ const Header: FC<HeaderProps> = ({ title = '', iconName }) => {
       <StatusBarOffset />
       <FlexContainer>
         {iconName && (
-          <TouchableOpacity
-            style={{
-              width: 40,
-              height: 40,
-              left: 15,
-              position: 'absolute',
-            }}
-          >
+          <TouchableOpacity style={styles}>
             <Ionicons
               onPress={() => navigation.goBack()}
               name={iconName}

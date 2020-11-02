@@ -1,4 +1,5 @@
 import { Colors } from 'assets/styles/colors';
+import { ImageStyle } from 'react-native';
 import styled from 'styled-components/native';
 
 export const CardContainer = styled.View`
@@ -44,10 +45,18 @@ export const TextBebaNeue = styled.Text`
 export const Website = styled.Text`
   font-size: 10px;
   margin-right: 0;
-  position: absolute;
-  right: 15px;
   text-decoration: underline;
   color: ${Colors.silver};
+`;
+
+export const WebsiteContainer = styled.TouchableOpacity`
+  position: absolute;
+  right: 15px;
+  height: 50px;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const IconsView = styled.View`
@@ -60,3 +69,19 @@ export const IconsView = styled.View`
   justify-content: center;
   align-items: center;
 `;
+
+export const imageStyles: ImageStyle = {
+  width: 50,
+  height: 48,
+  resizeMode: 'contain',
+  borderWidth: 1,
+  shadowColor: '#000',
+  shadowOffset: {
+    width: 0,
+    height: 2,
+  },
+  shadowOpacity: 0.25,
+  shadowRadius: 3.84,
+  backgroundColor: Colors.white,
+  marginRight: '2%',
+};

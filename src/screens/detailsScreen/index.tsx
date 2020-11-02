@@ -2,76 +2,50 @@ import React, { FC } from 'react';
 import Header from 'components/header/index';
 import { BottomContainer, Container, TopContainer } from '../mainScreen/styles';
 import { CenteredText } from 'assets/styles/main';
-import { gql, useQuery } from '@apollo/client';
 import Company from 'components/company';
-import { Text } from 'react-native';
 import { ContainerScroll } from 'components/companiesList/styles';
 import JobComponent from 'components/Jobs';
+import { CompanyType, Job } from 'interfaces';
+import { customJobStyle, customStyles } from './styles';
 
 const DetailsScreen: FC<any> = ({ route }) => {
   const { company } = route.params;
 
-  const queryJobs: Company = {
+  const comp: CompanyType = {
     name: company.name,
     websiteUrl: company.websiteUrl,
     logoUrl: company.logoUrl,
   };
 
-  const JOBS_QUERY = gql`
-    query getCompaniesByName($name: String!) {
-      companies {
-        jobs(where: { company: { name: $name } }) {
-          title
-          commitment {
-            title
-          }
-          locationNames
-          cities {
-            name
-            country {
-              name
-            }
-          }
-          remotes {
-            name
-          }
-        }
-      }
-    }
-  `;
+  let jobs: Array<Job>;
 
-  const { data, loading, error } = useQuery(JOBS_QUERY, {
-    variables: { name: queryJobs.name },
-  });
-  let jobs;
-  if (data) {
-    jobs = data.companies[0].jobs;
-    for (let i = 0; i < jobs.length; i++) {
-      const job = jobs[i];
-    }
+  if (company) {
+    jobs = company.jobs;
   }
-  return !loading ? (
+
+  return (
     <Container>
       <TopContainer>
         <Header iconName="md-arrow-back" title="Job search"></Header>
       </TopContainer>
       <BottomContainer>
-        <CenteredText customStyles>Trabajos disponibles en</CenteredText>
-        <Company company={queryJobs}></Company>
+        <CenteredText customStyles={customStyles}>
+          {jobs && jobs.length > 0
+            ? 'Empleos disponibles en:'
+            : 'No se encontraron empleos disponibles en:'}
+        </CenteredText>
+        <Company company={comp}></Company>
         <ContainerScroll>
           {jobs.map((job: any, i: number) => (
             <JobComponent
-              customStyle={
-                jobs.length - 1 === i ? 'margin-bottom: 30px;' : null
-              }
+              key={`${i}job_`}
+              customStyle={jobs.length - 1 === i ? customJobStyle : ''}
               job={job}
             ></JobComponent>
           ))}
         </ContainerScroll>
       </BottomContainer>
     </Container>
-  ) : (
-    <Text>Cargando</Text>
   );
 };
 

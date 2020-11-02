@@ -1,34 +1,43 @@
+import { useQuery } from '@apollo/client';
 import { TextBebaNeue } from 'components/company/styles';
+import { JobProps } from 'interfaces';
 import React, { FC } from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
+import { REMOTES_QUERY } from './queries';
 import {
   Card,
   CommitmentText,
   FlexContainerBottom,
+  imageStyles,
   SuccessText,
   TopContainerJob,
 } from './styles';
 
-const JobComponent: FC<any> = (props) => {
-  console.log(props);
-  return (
-    <Card customStyle={props.customStyle}>
-      <TopContainerJob>
-        <TextBebaNeue customStyle="max-width: 70%; font-size: 18px;">
-          <Text>{props.job.title}</Text>
-        </TextBebaNeue>
-        <SuccessText>{props.job.remotes[0].name}</SuccessText>
-      </TopContainerJob>
+const JobComponent: FC<JobProps> = ({ customStyle, job }: JobProps) => {
+  const { data, loading } = useQuery(REMOTES_QUERY);
+  const isRemote = () => {
+    for (const i of data.remotes[0].jobs) {
+      return i.id === job.id;
+    }
+  };
 
-      {props.job.cities.map((city) => (
-        <FlexContainerBottom>
+  return !loading ? (
+    <Card customStyle={customStyle}>
+      <TopContainerJob>
+        <TextBebaNeue customStyle={imageStyles}>
+          <Text>{job.title}</Text>
+        </TextBebaNeue>
+        {isRemote() ? <SuccessText>Remote</SuccessText> : null}
+      </TopContainerJob>
+      {job.cities.map((city, index) => (
+        <FlexContainerBottom key={`${index}city_key`}>
           <Text>{city.name}, </Text>
           <Text>{city.country.name}.</Text>
         </FlexContainerBottom>
       ))}
-      <CommitmentText>*{props.job.commitment.title}</CommitmentText>
+      <CommitmentText>*{job.commitment.title}</CommitmentText>
     </Card>
-  );
+  ) : null;
 };
 
 export default JobComponent;

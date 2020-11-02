@@ -6,5 +6,5 @@ export const ContainerScroll = styled.ScrollView`
   margin-top: 20px;
   margin-bottom: 20px;
   width: 100%;
-  padding: 10px;
+  padding: 3px;
 `;

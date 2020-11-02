@@ -18,7 +18,7 @@ export const SuccessText = styled.Text`
   color: ${Colors.success};
   position: absolute;
   right: 0;
-  bottom: 5;
+  bottom: 5px;
 `;
 
 export const TopContainerJob = styled.View`
@@ -45,3 +45,5 @@ export const CommitmentText = styled.Text`
   font-weight: bold;
   color: ${Colors.blueMunsell};
 `;
+
+export const imageStyles = 'max-width: 70%; font-size: 18px;';
