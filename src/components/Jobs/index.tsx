@@ -21,13 +21,13 @@ const JobComponent: FC<JobProps> = ({ customStyle, job }: JobProps) => {
     }
   };
 
-  return !loading ? (
+  return (
     <Card customStyle={customStyle}>
       <TopContainerJob>
         <TextBebaNeue customStyle={imageStyles}>
           <Text>{job.title}</Text>
         </TextBebaNeue>
-        {isRemote() ? <SuccessText>Remote</SuccessText> : null}
+        {!loading && isRemote() ? <SuccessText>Remote</SuccessText> : null}
       </TopContainerJob>
       {job.cities.map((city, index) => (
         <FlexContainerBottom key={`${index}city_key`}>
@@ -37,7 +37,7 @@ const JobComponent: FC<JobProps> = ({ customStyle, job }: JobProps) => {
       ))}
       <CommitmentText>*{job.commitment.title}</CommitmentText>
     </Card>
-  ) : null;
+  );
 };
 
 export default JobComponent;
