@@ -49,3 +49,10 @@ export const styles: StyleProp<Object> = {
   left: 15,
   position: 'absolute',
 };
+
+export const stylesRight: StyleProp<Object> = {
+  width: 40,
+  height: 40,
+  right: 15,
+  position: 'absolute',
+};

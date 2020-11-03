@@ -14,6 +14,16 @@ export const Card = styled.View`
   ${(props) => (props.customStyle ? `${props.customStyle}` : null)}
 `;
 
+export const IconFavorite = styled.View`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 5px;
+  padding-top: 5px;
+`;
+
 export const SuccessText = styled.Text`
   color: ${Colors.success};
   position: absolute;

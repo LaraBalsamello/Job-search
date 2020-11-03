@@ -1,11 +1,12 @@
 export interface CompanyProps {
   company: CompanyType;
+  link?: boolean;
 }
 
 export type CompanyType = {
   name: string;
   logoUrl: string;
-  websiteUrl: string;
+  websiteUrl?: string;
 };
 
 export interface CompaniesListProps {
@@ -15,11 +16,14 @@ export interface CompaniesListProps {
 export interface HeaderProps {
   title: string;
   iconName?: string;
+  showFavorites?: string;
 }
 
 export interface JobProps {
   customStyle: string;
   job: Job;
+  toggleFavorite?: Function;
+  favorites?: boolean;
 }
 
 export interface Job {
@@ -27,8 +31,8 @@ export interface Job {
   cities: Array<City>;
   commitment: Commitment;
   remotes: Remotes;
-  locationNames: string;
   id: string;
+  company?: CompanyType;
 }
 
 export interface RemoteJob {

@@ -14,7 +14,7 @@ import {
 import { MaterialIcons } from '@expo/vector-icons';
 import { CompanyProps, CompanyType } from 'interfaces';
 
-const Company: FC<CompanyProps> = ({ company }) => {
+const Company: FC<CompanyProps> = ({ company, link = true }) => {
   const navigation = useNavigation();
   const handleNav = (company: CompanyType) => {
     navigation.navigate('Jobs', { company });
@@ -32,9 +32,15 @@ const Company: FC<CompanyProps> = ({ company }) => {
         )}
       </TouchableOpacity>
       <CardContainer>
-        <CompanyNameText onPress={() => handleNav(company)}>
-          <Text>{company.name}</Text>
-        </CompanyNameText>
+        {link ? (
+          <CompanyNameText onPress={() => handleNav(company)}>
+            <Text>{company.name}</Text>
+          </CompanyNameText>
+        ) : (
+          <CompanyNameText activeOpacity={1}>
+            <Text>{company.name}</Text>
+          </CompanyNameText>
+        )}
         <WebsiteContainer onPress={() => Linking.openURL(company.websiteUrl)}>
           <Website>WebSite</Website>
         </WebsiteContainer>

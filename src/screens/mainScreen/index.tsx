@@ -12,13 +12,15 @@ import { CenteredText } from 'assets/styles/main';
 import { useQuery } from '@apollo/client';
 import { COMPANIES_QUERY } from './queries';
 import Loader from 'components/Loader';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 
 const MainScreen: FC = () => {
   const { data, loading } = useQuery(COMPANIES_QUERY);
+
   return !loading ? (
     <Container>
       <TopContainer>
-        <Header title="Job search"></Header>
+        <Header title="Job search" showFavorites="favorite"></Header>
       </TopContainer>
       <BottomContainer>
         <CenteredText customStyles={customStyles}>Bienvenid@!</CenteredText>

@@ -17,9 +17,10 @@ export const COMPANIES_QUERY = gql`
         commitment {
           title
         }
-        locationNames
         title
         company {
+          logoUrl
+          websiteUrl
           name
         }
       }
