@@ -11,6 +11,7 @@ import {
 import { CenteredText } from 'assets/styles/main';
 import { useQuery } from '@apollo/client';
 import { COMPANIES_QUERY } from './queries';
+import Loader from 'components/Loader';
 
 const MainScreen: FC = () => {
   const { data, loading } = useQuery(COMPANIES_QUERY);
@@ -30,7 +31,9 @@ const MainScreen: FC = () => {
         <CompaniesList companies={data && data.companies}></CompaniesList>
       </BottomContainer>
     </Container>
-  ) : null;
+  ) : (
+    <Loader loadingText="Cargando compañias" />
+  );
 };
 
 export default MainScreen;

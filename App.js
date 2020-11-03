@@ -4,6 +4,7 @@
 import * as React from 'react';
 import { useFonts } from 'expo-font';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import Loader from 'components/Loader/index.tsx';
 import MainNav from './src/navigation/index.tsx';
 
 // Initialize Apollo Client
@@ -18,11 +19,11 @@ export default function App() {
     asap: require('assets/fonts/Asap-Medium.ttf'),
     asapBold: require('assets/fonts/Asap-Bold.ttf'),
   });
-  return (
-    isLoaded && (
-      <ApolloProvider client={client}>
-        <MainNav />
-      </ApolloProvider>
-    )
+  return isLoaded ? (
+    <ApolloProvider client={client}>
+      <MainNav />
+    </ApolloProvider>
+  ) : (
+    <Loader />
   );
 }
