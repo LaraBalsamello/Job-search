@@ -3,7 +3,7 @@ import { Fonts } from 'assets/styles/font';
 import { StatusBar, StyleProp } from 'react-native';
 import styled from 'styled-components/native';
 
-export const FlexContainer: StyleProp<any> = styled.View`
+export const FlexContainer = styled.View`
   shadow-color: black;
   shadow-opacity: 0.32;
   shadow-radius: 5.46px;
@@ -24,19 +24,19 @@ export const FlexContainer: StyleProp<any> = styled.View`
   position: relative;
 `;
 
-export const StatusBarOffset: StyleProp<any> = styled.View`
+export const StatusBarOffset = styled.View`
   min-height: ${StatusBar.currentHeight}px;
   background-color: ${Colors.white};
   display: flex;
 `;
 
-export const TextContainer: StyleProp<any> = styled.View`
+export const TextContainer = styled.View`
   display: flex;
   margin-top: ${StatusBar.currentHeight}px;
   flex-direction: row;
 `;
 
-export const BoldTitleWhite: StyleProp<any> = styled.Text`
+export const BoldTitleWhite = styled.Text`
   display: flex;
   font-size: 24px;
   font-family: ${Fonts.title};

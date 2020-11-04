@@ -9,15 +9,9 @@ import {
 import React, { FC, useEffect, useRef } from 'react';
 import { Animated, StyleProp } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { customStyles } from 'screens/mainScreen/styles';
+import { LoadingProps } from 'interfaces';
 
-interface loadingProps {
-  loadingText?: string;
-  customStyles?: StyleProp<string>;
-  colors?: any;
-}
-
-const Loader: FC<loadingProps> = ({
+const Loader: FC<LoadingProps> = ({
   loadingText,
   customStylesForContainer,
   colors = Colors.white,

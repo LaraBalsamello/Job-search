@@ -12,18 +12,16 @@ import { customJobStyle } from 'screens/detailsScreen/styles';
 import { ContainerScroll } from 'components/companiesList/styles';
 import Company from 'components/company';
 import { View } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Job } from 'interfaces';
 
 const FavoriteJobsScreen: FC = () => {
-  const [jobs, setJobs] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [jobs, setJobs] = useState([]);
 
-  const removeJobs = async (job) => {
+  const removeJobs = async (job: Job) => {
     try {
       setJobs([]);
-      setLoading(true);
       let favJobs = await getStoredData('fav_job');
-      let mappedJobs = favJobs.filter((fav) => {
+      let mappedJobs = favJobs.filter((fav: Job) => {
         if (fav.id !== job.id) {
           return fav;
         }
@@ -39,7 +37,6 @@ const FavoriteJobsScreen: FC = () => {
     try {
       const data = await getStoredData('fav_job');
       setJobs(data);
-      setLoading(false);
     } catch (error) {}
   };
 
@@ -68,7 +65,7 @@ const FavoriteJobsScreen: FC = () => {
                   link={false}
                 ></Company>
                 <JobComponent
-                  toggleFavorite={(job) => removeJobs(job)}
+                  toggleFavorite={(job: Job) => removeJobs(job)}
                   key={`${i}job_`}
                   favorite={true}
                   customStyle={jobs.length - 1 === i ? customJobStyle : ''}

@@ -1,8 +1,7 @@
 import { Colors } from 'assets/styles/colors';
-import { StyleProp } from 'react-native';
 import styled from 'styled-components/native';
 
-export const Container: StyleProp<any> = styled.SafeAreaView`
+export const Container = styled.SafeAreaView`
   display: flex;
   flex-direction: column;
   background-color: ${Colors.white};
@@ -10,13 +9,13 @@ export const Container: StyleProp<any> = styled.SafeAreaView`
   width: 100%;
 `;
 
-export const TopContainer: StyleProp<any> = styled.View`
+export const TopContainer = styled.View`
   display: flex;
   flex-direction: column;
   width: 100%;
 `;
 
-export const BottomContainer: StyleProp<any> = styled.View`
+export const BottomContainer = styled.View`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,7 +25,7 @@ export const BottomContainer: StyleProp<any> = styled.View`
   padding: 10px;
 `;
 
-export const SmallText: StyleProp<any> = styled.Text`
+export const SmallText = styled.Text`
   font-size: 9px;
   padding: 15px;
   padding-bottom: 0px;

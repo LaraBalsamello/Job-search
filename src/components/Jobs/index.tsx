@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { TextBebaNeue } from 'components/company/styles';
 import { JobProps } from 'interfaces';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import { Text } from 'react-native';
 import { REMOTES_QUERY } from './queries';
 import {
@@ -50,7 +50,7 @@ const JobComponent: FC<JobProps> = ({
           <CommitmentText>*{job.commitment.title}</CommitmentText>
           <TouchableOpacity
             activeOpacity={1}
-            onPress={() => toggleFavorite(job, favorite)}
+            onPress={() => toggleFavorite && toggleFavorite(job, favorite)}
           >
             {favorite ? (
               <MaterialIcons name="favorite" size={24} color={Colors.error} />

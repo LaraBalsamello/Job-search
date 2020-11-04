@@ -12,7 +12,6 @@ import { CenteredText } from 'assets/styles/main';
 import { useQuery } from '@apollo/client';
 import { COMPANIES_QUERY } from './queries';
 import Loader from 'components/Loader';
-import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 
 const MainScreen: FC = () => {
   const { data, loading } = useQuery(COMPANIES_QUERY);

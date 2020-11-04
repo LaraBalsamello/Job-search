@@ -8,11 +8,8 @@ import JobComponent from 'components/Jobs';
 import { CompanyType, Job } from 'interfaces';
 import { customJobStyle, customStyles } from './styles';
 import { getStoredData, storeData } from 'helpers';
-import AsyncStorage, {
-  useAsyncStorage,
-} from '@react-native-async-storage/async-storage';
-import { useBackButton, useIsFocused } from '@react-navigation/native';
-import { empty } from '@apollo/client';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import { useIsFocused } from '@react-navigation/native';
 
 const DetailsScreen: FC<any> = ({ route }) => {
   const { company } = route.params;
@@ -24,7 +21,6 @@ const DetailsScreen: FC<any> = ({ route }) => {
   };
 
   const [favJobs, setFavs] = useState([]);
-  const [favsLoaded, setFavsLoaded] = useState(false);
 
   let jobs: Array<Job>;
 
@@ -32,7 +28,7 @@ const DetailsScreen: FC<any> = ({ route }) => {
     jobs = company.jobs;
   }
 
-  const saveJobs = async (job) => {
+  const saveJobs = async (job: Job) => {
     try {
       const favJobs = await getStoredData('fav_job');
       let newJobFav = favJobs ? favJobs : [];
@@ -44,10 +40,10 @@ const DetailsScreen: FC<any> = ({ route }) => {
     }
   };
 
-  const removeJobs = async (job) => {
+  const removeJobs = async (job: Job) => {
     try {
       let favJobs = await getStoredData('fav_job');
-      let mappedJobs = favJobs.filter((fav) => {
+      let mappedJobs = favJobs.filter((fav: Job) => {
         if (fav.id !== job.id) {
           return fav;
         }
@@ -59,8 +55,7 @@ const DetailsScreen: FC<any> = ({ route }) => {
     }
   };
 
-  const toggleFavorite = async (job, isFav) => {
-    setFavsLoaded(false);
+  const toggleFavorite = async (job: Job, isFav: boolean) => {
     if (isFav) {
       removeJobs(job);
     } else {
@@ -72,14 +67,12 @@ const DetailsScreen: FC<any> = ({ route }) => {
       let favoriteJobs = await useAsyncStorage('fav_job').getItem();
       favoriteJobs = favoriteJobs && JSON.parse(favoriteJobs);
       favoriteJobs && setFavs(favoriteJobs);
-      setFavsLoaded(true);
     } catch {
       console.error('ERROR');
-      setFavsLoaded(true);
     }
   };
 
-  const isFavorite = (job) => {
+  const isFavorite = (job: Job) => {
     if (favJobs) {
       for (let i = 0; i < favJobs.length; i++) {
         if (favJobs[i].id === job.id) {
@@ -114,15 +107,18 @@ const DetailsScreen: FC<any> = ({ route }) => {
         </CenteredText>
         <Company company={comp} link={false} touchable={false}></Company>
         <ContainerScroll>
-          {jobs.map((job: any, i: number) => (
-            <JobComponent
-              toggleFavorite={(job, favorite) => toggleFavorite(job, favorite)}
-              key={`${i}job_`}
-              favorite={isFavorite(job)}
-              customStyle={jobs.length - 1 === i ? customJobStyle : ''}
-              job={job}
-            ></JobComponent>
-          ))}
+          {jobs &&
+            jobs.map((job: any, i: number) => (
+              <JobComponent
+                toggleFavorite={(job: Job, favorite: boolean) =>
+                  toggleFavorite(job, favorite)
+                }
+                key={`${i}job_`}
+                favorite={isFavorite(job)}
+                customStyle={jobs.length - 1 === i ? customJobStyle : ''}
+                job={job}
+              ></JobComponent>
+            ))}
         </ContainerScroll>
       </BottomContainer>
     </Container>

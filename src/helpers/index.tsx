@@ -14,5 +14,6 @@ export const getStoredData = async (key: string): Promise<any> => {
     return response != null ? JSON.parse(response) : null;
   } catch (e) {
     // error reading value
+    console.error();
   }
 };

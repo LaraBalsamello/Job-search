@@ -1,3 +1,5 @@
+import { StyleProp } from 'react-native';
+
 export interface CompanyProps {
   company: CompanyType;
   link?: boolean;
@@ -59,4 +61,11 @@ export interface City {
 
 export interface Country {
   name: string;
+}
+
+export interface LoadingProps {
+  loadingText?: string;
+  customStyles?: StyleProp<string>;
+  colors?: any;
+  customStylesForContainer?: string;
 }
