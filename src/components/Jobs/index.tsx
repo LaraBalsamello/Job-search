@@ -23,11 +23,13 @@ const JobComponent: FC<JobProps> = ({
   toggleFavorite,
   favorite,
 }: JobProps) => {
-  const { data, loading } = useQuery(REMOTES_QUERY);
+  const { data, loading, error } = useQuery(REMOTES_QUERY);
 
   const isRemote = () => {
-    for (const i of data.remotes[0].jobs) {
-      return i.id === job.id;
+    if (!error) {
+      for (const i of data.remotes[0].jobs) {
+        return i.id === job.id;
+      }
     }
   };
 

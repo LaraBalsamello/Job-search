@@ -10,6 +10,7 @@ import { customJobStyle, customStyles } from './styles';
 import { getStoredData, storeData } from 'helpers';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { useIsFocused } from '@react-navigation/native';
+import { ToastAndroid } from 'react-native';
 
 const DetailsScreen: FC<any> = ({ route }) => {
   const { company } = route.params;
@@ -35,8 +36,8 @@ const DetailsScreen: FC<any> = ({ route }) => {
       newJobFav.push(job);
       await storeData('fav_job', JSON.stringify(newJobFav));
       getFavorites();
-    } catch (error) {
-      console.error('asdasdkjsadlklj', error);
+    } catch {
+      ToastAndroid.show('Hubo un problema guardando empleo en favoritos', 1000);
     }
   };
 
@@ -50,8 +51,8 @@ const DetailsScreen: FC<any> = ({ route }) => {
       });
       await storeData('fav_job', JSON.stringify(mappedJobs));
       getFavorites();
-    } catch (error) {
-      console.error('asdasdkjsadlklj', error);
+    } catch {
+      ToastAndroid.show('Hubo un problema borrando empleo de favoritos', 1000);
     }
   };
 
@@ -68,7 +69,7 @@ const DetailsScreen: FC<any> = ({ route }) => {
       favoriteJobs = favoriteJobs && JSON.parse(favoriteJobs);
       favoriteJobs && setFavs(favoriteJobs);
     } catch {
-      console.error('ERROR');
+      ToastAndroid.show('Hubo un problema obteniendo empleos favoritos', 1000);
     }
   };
 

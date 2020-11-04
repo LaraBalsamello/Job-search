@@ -11,7 +11,7 @@ import { getStoredData, storeData } from 'helpers';
 import { customJobStyle } from 'screens/detailsScreen/styles';
 import { ContainerScroll } from 'components/companiesList/styles';
 import Company from 'components/company';
-import { View } from 'react-native';
+import { ToastAndroid, View } from 'react-native';
 import { Job } from 'interfaces';
 
 const FavoriteJobsScreen: FC = () => {
@@ -28,8 +28,8 @@ const FavoriteJobsScreen: FC = () => {
       });
       await storeData('fav_job', JSON.stringify(mappedJobs));
       getData();
-    } catch (error) {
-      console.error('asdasdkjsadlklj', error);
+    } catch {
+      ToastAndroid.show('Hubo un problema borrando empleo de favoritos', 1000);
     }
   };
 
@@ -37,7 +37,9 @@ const FavoriteJobsScreen: FC = () => {
     try {
       const data = await getStoredData('fav_job');
       setJobs(data);
-    } catch (error) {}
+    } catch {
+      ToastAndroid.show('Hubo un problema obteniendo empleos favoritos', 1000);
+    }
   };
 
   useEffect(() => {
