@@ -22,6 +22,7 @@ export const COMPANIES_QUERY = gql`
           logoUrl
           websiteUrl
           name
+          id
         }
       }
     }

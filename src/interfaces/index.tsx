@@ -1,6 +1,7 @@
 export interface CompanyProps {
   company: CompanyType;
   link?: boolean;
+  touchable?: boolean;
 }
 
 export type CompanyType = {
@@ -23,7 +24,7 @@ export interface JobProps {
   customStyle: string;
   job: Job;
   toggleFavorite?: Function;
-  favorites?: boolean;
+  favorite?: boolean;
 }
 
 export interface Job {

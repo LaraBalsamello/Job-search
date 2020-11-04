@@ -8,6 +8,7 @@ export const REMOTES_QUERY = gql`
         id
         company {
           name
+          id
         }
       }
     }

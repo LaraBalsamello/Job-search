@@ -38,7 +38,6 @@ const FavoriteJobsScreen: FC = () => {
   const getData = async () => {
     try {
       const data = await getStoredData('fav_job');
-      console.log(data);
       setJobs(data);
       setLoading(false);
     } catch (error) {}
@@ -54,13 +53,13 @@ const FavoriteJobsScreen: FC = () => {
         <Header title="Job search" iconName="md-arrow-back"></Header>
       </TopContainer>
       <BottomContainer>
-        <CenteredText>{!jobs && 'No hay '}Empleos guardados</CenteredText>
+        <CenteredText>Favoritos</CenteredText>
         <ContainerScroll>
-          {jobs &&
-            jobs.length > 0 &&
+          {jobs && jobs.length > 0 ? (
             jobs.map((job: any, i: number) => (
-              <View>
+              <View key={i}>
                 <Company
+                  touchable={false}
                   company={{
                     name: job.company.name,
                     logoUrl: job.company.logoUrl,
@@ -76,7 +75,12 @@ const FavoriteJobsScreen: FC = () => {
                   job={job}
                 ></JobComponent>
               </View>
-            ))}
+            ))
+          ) : (
+            <CenteredText customStyles="font-size: 12px">
+              *No se encontrarion empleos guardados
+            </CenteredText>
+          )}
         </ContainerScroll>
       </BottomContainer>
     </Container>

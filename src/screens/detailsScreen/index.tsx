@@ -112,7 +112,7 @@ const DetailsScreen: FC<any> = ({ route }) => {
             ? 'Empleos disponibles en:'
             : 'No se encontraron empleos disponibles en:'}
         </CenteredText>
-        <Company company={comp} link={false}></Company>
+        <Company company={comp} link={false} touchable={false}></Company>
         <ContainerScroll>
           {jobs.map((job: any, i: number) => (
             <JobComponent
